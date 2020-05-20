@@ -1,0 +1,11 @@
+for i in $user
+do
+# awk -F: -v x=$i '$1==x{print $1,$2}'
+done
+
+# -v is variable
+
+
+
+
+2. unset v
