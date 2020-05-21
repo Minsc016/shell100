@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ls | sed 's/^s//g' | sort -h | sed 's/^/s/g'

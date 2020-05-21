@@ -1,0 +1,15 @@
+MariaDB是MySQL源代码的一个分支，随着Oracle买下Sun，MySQL也落入了关系型数据库王者之手。在意识到Oracle会对MySQL许可做什么后便分离了出来（MySQL先后被Sun、Oracle收购），MySQL之父的Michael以他女儿Maria的名字开始了MySQL的另外一个衍生版本：MariaDB。这两个数据库究竟有什么本质的区别没有？
+
+区别一：
+
+MariaDB不仅仅是Mysql的一个替代品，MariaDB包括的一些新特性使它优于MySQL。
+
+区别二：
+
+MariaDB跟MySQL在绝大多数方面是兼容的，对于开发者来说，几乎感觉不到任何不同。目前MariaDB是发展最快的MySQL分支版本，新版本发布速度已经超过了Oracle官方的MySQL版本。
+
+MariaDB 是一个采用Aria存储引擎的MySQL分支版本， 这个项目的更多的代码都改编于 MySQL 6.0
+
+区别三：
+
+通过全面测试发现，MariaDB的查询效率提升了3%-15%，平均提升了8%，而且没有任何异常发生；以qp为单位，吞吐量提升了2%-10%。由于缺少数据支持，现在还不能得出任何结论，但单从测试结果看来还是非常积极的。join中索引的使用以及查询优化，特别是子查询方面，MariaDB都有不少提升。此外，MariaDB对MySQL导入导出有良好支持。

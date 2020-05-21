@@ -9,3 +9,28 @@ done
 
 
 2. unset v
+
+
+3.echo ${list[@]} 显示list中所有元素
+  list[-1] + list[-2]  倒数两个元素相加
+
+
+4. cat 输出多行文字
+cat << foo
+baba
+lala
+bilibili
+binglingbingling
+foo
+# 也可输出到文件
+
+
+5. 使用 trap 获取信号.
+trap 'echo "暂停 10s";sleep 10' 2 拦截2信号.
+
+6. 使用sed 先匹再替换
+sed '/^首单词/s/这行的某部分,比如=.*会替换这行=及后面的/=想要替换成的内容/'
+
+7.Ubuntu install:
+sudo apt-cache search software-package
+sudo apt-get install s-p
