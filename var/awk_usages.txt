@@ -1,0 +1,65 @@
+s5_memmoniter.sh:# awk 可以//匹配
+s5_memmoniter.sh:disk_size=$(df | awk '/\//{print $4}')
+s5_memmoniter.sh:mem_size=$(free | awk '/Mem/{print $4}')
+
+s18_dateeth0.sh:	ifconfig $1 | grep 'RX pack' | awk '{print $5}'
+s18_dateeth0.sh:	ifconfig $1 | grep 'TX pack' | awk '{print $5}'
+
+s25_howmanyromoteip.sh:netstat -atn | awk '{print $5}' | awk '{print $1}' | sort -nr | uniq -c
+s25_howmanyromoteip.sh:# netstat -atn | awk '/tcp/{print $5}' | awk '{print $1}' | sort -nr | uniq -c
+s25_howmanyromoteip.sh:# 使用 awk 命令仅显示第 5 列数据,再显示第 1 列 IP 地址的信息
+
+s27_howmanyrequesttoapacheserverintime.sh:awk -F "[ /:]" '$7":"$8>="13:30" && $7":"$8<="14:30"' /var/log/httpd/access_log |wc -l
+s27_howmanyrequesttoapacheserverintime.sh:# awk 使用‐F 选项指定文件内容的分隔符是/或者:
+
+s28_whatisrequesttoapachesserverintime.sh:awk -F'[/:]' '$7":"$8>="13:30" && $7":"$8<="14:30" {print $1}' a.log
+s28_whatisrequesttoapachesserverintime.sh:# awk 使用‐F 选项指定文件内容的分隔符是/或者:
+s28_whatisrequesttoapachesserverintime.sh:# 日志文档内容里面,第 1 列是远程主机的 IP 地址,使用 awk 单独显示第 1 列即可
+
+s30_requesttimes.sh:awk '{ip[$1]++}END{for(i in ip){print ip[i],i}}' /var/log/httpd/access_log'
+
+s31_howmanyaccareloging.sh:awk -f: '/bash$/{x++}end{print x}' /etc/passwd''
+
+s39_mysqlconsnum.sh:	count=`mysqladmin -u "$user" -p "$passwd" status | awk '{print $4}'`
+
+s49_showCPUinfo.sh:awk '/vendor_id/{print $3}' /proc/cpuinfo | uniq
+
+s50_delsize0file.sh:# 我的写法: ls -l | awk '$5==0 {print $9}' | xargs rm -rf
+
+s51_findzombieprocess.sh:# awk 判断 ps 命令输出的第 8 列为 Z 是,显示该进程的 PID 和进程命令
+s51_findzombieprocess.sh:ps aux | awk '{if($8 == "Z"){print $2,$11}}'
+s51_findzombieprocess.sh:# 不加if 也可以 ps aux | awk '$8=="Z" print{$2,$11}'
+
+s61_showusers.sh:awk -F: '{print $1}' /etc/passwd
+
+s64_int_LAMP.sh:num=$(yum repolist | awk '/repolist/{print $2}' | sed 's/,//')
+
+s66_getlocalMAC.sh:# awk 读取 ip 命令的输出,输出结果中如果有以数字开始的行,先显示该行的地 2 列(网卡名称),
+s66_getlocalMAC.sh:ip a s | awk 'BEGIN{print "本机mac地址信息如下:"}/^[0-9]/{print $2;getline;if($0~/link\/ether/){print $2}}' | grep -v lo
+
+s72_findud.sh:	awk -F: -v x=$i '$1==x{print $1,$2}' /etc/shadow
+s72_findud.sh:user=$(awk -F: '/bash$/{print $1}' /etc/passwd)
+
+s73_countrootpwd.sh:awk -F: '{i=1;while(i<=NF){if($i~/root/){x++};i++}} END{print "root 出现次数为"x}' /etc/passwd
+
+s74_countprocess.sh:	stat=$(awk '{print $3}' $pid/stat)
+
+s80_show_opensockets.sh:ss -nutlp | awk '{print $1,$5}' | awk -F"[: ]" '{print "协议:"$1,"端口号:"$NF}' | grep "[0‐9]" | uniq
+
+s81_deluidover1000.sh:user=$(awk -F: '$3>=1000{print $1}' /etc/passwd)
+s81_deluidover1000.sh:# 先用 awk 提取所有 uid 大于等于 1000 的普通用户名称
+
+s84_KVMnetinfo.sh:	awk -F= '/IPADDR/{print $2}' /media/virtimage/etc/sysconfig/network-scripts/ifcfg-$i
+s84_KVMnetinfo.sh:dev=$(ls /media/virtimage/etc/sysconfig/network‐scripts/ifcfg-* |awk -F"[/‐]" '{print $9}')
+
+s85_alteradd.sh:awk -F= -v x=$addr '$2==x{print "完成..."}' $mountpoint/etc/sysconfig/network‐scripts/ifcfg-$dev
+
+s98_doubleball.sh:awk '{print $1"\n"$2"\n"$3"\n"$4"\n"$5"\n"$6}' 1.txt | sort | uniq -c | sort
+s98_doubleball.sh:awk '{print $7}' 1.txt | sort | uniq -c | sort
+
+s100_awk_wcprog.sh:awk '{chars+=length($0)+1;words+=NF} END{print "行数:"NR,"单词数:"words,"字符数:"chars}' $1
+s100_awk_wcprog.sh:# awk 内置变量 NR 存储行数
+s100_awk_wcprog.sh:# File Name: s100_awk_wcprog.sh
+s100_awk_wcprog.sh:# length()为 awk 内置函数,用来统计每行的字符数量,因为每行都会有一个隐藏的$,所以每次统计后都+1
+s100_awk_wcprog.sh:# 用awk编写的wc程序
+

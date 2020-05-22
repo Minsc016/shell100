@@ -34,3 +34,8 @@ sed '/^首单词/s/这行的某部分,比如=.*会替换这行=及后面的/=想
 7.Ubuntu install:
 sudo apt-cache search software-package
 sudo apt-get install s-p
+
+8.$# $@ 的用法:
+name 是一个list
+echo "总数量:${name[*]}"
+echo "所有name:${name[@]}"
