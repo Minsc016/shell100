@@ -31,7 +31,7 @@ fi
 stty -echo
 read -p "请输入密码" pass
 stty echo
-pass=${$pass:- 123456}
+pass=${pass:- 123456}
 
 useradd "$user"
 echo "$pass"|passwd - - stdin "$user"

@@ -39,3 +39,51 @@ sudo apt-get install s-p
 name 是一个list
 echo "总数量:${name[*]}"
 echo "所有name:${name[@]}"
+
+9.remote: This repository moved. Please use the new location [new location]
+git remote -v # to check the current location
+git remote set-url origin [updated link url https://........git] # change it
+
+10.unzip decompress chinese-character :
+unzip -d exdir -O cp936 package.zip
+
+11.tar -z --> gz
+tar -czf *.tar.gz dirfiles
+
+12.输入密码不显示
+1.read -sp "请输入密码:" passwd
+2.stty -echo 关闭输出 stty echo 打开
+
+13.字符串包含
+1) grep
+2) [[ =~ ]]
+
+14.变量若为空则使用默认值:
+1). [ $v ] || v=value
+2). v=${v:-value}
+
+15.ping:
+次数-c
+间隔时间-i
+超时单位
+ping -c2 -i0.3 -W 1 ip_address
+
+16,killall $0
+
+$0 是进程名称,但是通常带路径,带路径是killall不了的.
+可以用awk 把 / 当 分割符,取最后一列NF.:
+echo "$0" | awk -F'/' '{print $NF}' | xargs killall
+
+17.网卡流量信息:
+ifconfig RX package TX package
+
+18.截取字符串
+1.${string:start:length}
+2.${string:start}
+3.${string:0-start} #从右往左数
+4.${string:0-start:length}
+5.${string#*chars} # 第一次出现chars右边部分
+6.${string##*chars} # 最后一次出现chars右边部分
+7.${string%chars*} # 最后一次出现chars左边部分
+8.${string%%chars*} # 第一次出现chars左边部分
+
